@@ -1,0 +1,52 @@
+﻿@model Food_Medical_Info_System.Models.Dietician
+@{
+    ViewBag.Title = "DieticianReg";
+}
+
+<div class="panel panel-success" style="width:40%">
+    <div class="panel-heading text-center"> <h4> User Register</h4> </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Name :</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Email :</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password :</label>
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Contact No. :</label>
+                @Html.TextBoxFor(x => x.Contact, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Location :</label>
+                @Html.TextBoxFor(x => x.Location, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Experience :</label>
+                @Html.TextBoxFor(x => x.Experience, new { @class = "form-control" })
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" type="submit" value="Submit" onclick="submitForm()">Register Dietician</button>
+                <script>
+                    function submitForm() {
+                        if (confirm('Are you sure to submit form')) {
+                            var frm = document.getElementsByTagName("form");
+                            frm[0].submit();
+                        }
+                    }
+                </script>
+            </div>
+        }
+
+    </div>
+</div>
