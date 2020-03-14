@@ -17,7 +17,7 @@
         <div class="panel-body">
             @using (Html.BeginForm())
             {
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                //@Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <label>Name :</label>
                     @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
@@ -31,6 +31,8 @@
                 <div class="form-group">
                     <label>Password :</label>
                     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
                 </div>
                 <div class="form-group">
                     <label>Gender :</label>
@@ -38,23 +40,33 @@
            new SelectListItem() {Text = "Male", Value = bool.TrueString},
            new SelectListItem() {Text = "Female", Value = bool.FalseString}
            }, "Choose Gender", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+
                 </div>
 
                 <div class="form-group">
                     <label>Contact No. :</label>
                     @Html.TextBoxFor(x => x.ContactNo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ContactNo, "", new { @class = "text-danger" })
+
                 </div>
                 <div class="form-group">
                     <label>Height(cms) :</label>
                     @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
+
                 </div>
                 <div class="form-group">
                     <label>Weight(Kg) :</label>
                     @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger" })
+
                 </div>
                 <div class="form-group">
                     <label>Age :</label>
                     @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success" type="submit" value="Submit" onsubmit="submitForm()">Register</button>

@@ -22,11 +22,17 @@ namespace Food_Medical_Info_System.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your Contact no")]
+        [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage ="Please enter valid phone number")]
         public int Contact { get; set; }
+
         [Required(ErrorMessage = "Please enter your Location")]
+        [RegularExpression(@"^[A-Za-z ]*$",ErrorMessage ="Please enter valid Location")]
         public string Location { get; set; }
+
         [Required(ErrorMessage = "Please enter your Experience")]
+        [RegularExpression(@"^[0-8]{0,1}[0-9]{0,1}", ErrorMessage ="Please enter valid experience")]
         public int Experience { get; set; }
-            
+        
+
     }
 }

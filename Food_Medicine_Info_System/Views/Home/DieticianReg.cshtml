@@ -9,32 +9,44 @@
         @using (Html.BeginForm())
         {
 
-            @Html.ValidationSummary()
-            <div class="form-group">
-                <label>Name :</label>
-                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Email :</label>
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Password :</label>
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Name :</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                <label>Contact No. :</label>
-                @Html.TextBoxFor(x => x.Contact, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Location :</label>
-                @Html.TextBoxFor(x => x.Location, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label>Experience :</label>
-                @Html.TextBoxFor(x => x.Experience, new { @class = "form-control" })
-            </div>
+        </div>
+        <div class="form-group">
+            <label>Email :</label>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            <label>Password :</label>
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            <label>Contact No. :</label>
+            @Html.TextBoxFor(x => x.Contact, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            <label>Location :</label>
+            @Html.TextBoxFor(x => x.Location, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            <label>Experience :</label>
+            @Html.TextBoxFor(x => x.Experience, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Experience, "", new { @class = "text-danger" })
+
+        </div>
             <div class="text-center">
                 <button class="btn btn-success" type="submit" value="Submit" onclick="submitForm()">Register Dietician</button>
                 <script>

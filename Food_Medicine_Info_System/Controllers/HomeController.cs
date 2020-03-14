@@ -53,11 +53,26 @@ namespace Food_Medical_Info_System.Controllers
                 return View();
             }
         }
-
         public ActionResult DieticianReg()
         {
-
             return View();
+        }
+        [HttpPost]
+        public ActionResult DieticianReg(Dietician diet)
+        {
+            if(ModelState.IsValid)
+            {
+                using (var context = new Medicaldbcontext())
+                {
+                    // context.GuestResponses.Add(user);
+                    //context.SaveChanges();
+                }
+                return View("Search", diet);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
