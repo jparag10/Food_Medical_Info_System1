@@ -14,7 +14,7 @@ namespace Food_Medical_Info_System.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter your password")]
-        [RegularExpression(@"^(?=.{8,})$", ErrorMessage = "Password should be min 6 chars includin alphanumeric")]
+        [RegularExpression(@"(?=.*\d)(?=.*[A-Za-z]).{6,}", ErrorMessage = "Your password must be at least 6 characters long and contain at least 1 letter and 1 number")]
         public string Password { get; set; }
 
         //[RegularExpression(@"^([0-9a-zA-Z]([\+\-_\.][0-9a-zA-Z]+)*)+@(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]*\.)+[a-zA-Z0-9]{2,3})$", ErrorMessage = "Your email address is not in valid format. Ex. of correct email: paragjain@gmail.com")]
@@ -28,7 +28,8 @@ namespace Food_Medical_Info_System.Models
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter your Contact no")]
-        public int ContactNo{ get; set; }
+        [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage = "Please enter valid phone number")]
+        public long ContactNo{ get; set; }
 
         [Required(ErrorMessage = "Please enter your Height")]
         public double Height { get; set; }

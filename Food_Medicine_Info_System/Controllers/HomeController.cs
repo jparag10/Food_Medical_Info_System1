@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +9,12 @@ namespace Food_Medical_Info_System.Controllers
 {
     public class HomeController : Controller
     {
+        Medicaldbcontext mc = new Medicaldbcontext();
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Registration()
         {
             return View();
         }
@@ -43,8 +49,8 @@ namespace Food_Medical_Info_System.Controllers
             {
                 using (var context = new Medicaldbcontext())
                 {
-                   // context.GuestResponses.Add(user);
-                    //context.SaveChanges();
+                   context.Users.Add(user);
+                   context.SaveChanges();
                 }
                 return View("Search", user);
             }
@@ -53,19 +59,40 @@ namespace Food_Medical_Info_System.Controllers
                 return View();
             }
         }
+        [HttpGet]
         public ActionResult DieticianReg()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult DieticianReg(Dietician diet)
+        public ActionResult DieticianReg(Dietician diet, HttpPostedFileBase postedFile)
         {
-            if(ModelState.IsValid)
+            
+           
+            if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileName(postedFile.FileName);
+
+                ////Set the Image File Path.
+                string filePath = "~/Uploads/" + fileName;
+
+                ////Save the Image File in Folder.
+                postedFile.SaveAs(Server.MapPath(filePath));
+
+
+                diet.filepath = filePath;
+
+                ////Insert the Image File details in Table.
+                //// FilesEntities entities = new FilesEntities();
+                //db.images.Add(new Dietician
+                //{
+                //    Name = fileName,
+                //    FilePath = filePath
+                //});
                 using (var context = new Medicaldbcontext())
                 {
-                    // context.GuestResponses.Add(user);
-                    //context.SaveChanges();
+                     context.Dieticians.Add(diet);
+                    context.SaveChanges();
                 }
                 return View("Search", diet);
             }

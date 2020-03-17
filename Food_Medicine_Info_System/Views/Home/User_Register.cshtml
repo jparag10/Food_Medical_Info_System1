@@ -1,5 +1,7 @@
 ﻿@model Food_Medical_Info_System.Models.User
 @{
+    Layout = "~/Views/Shared/_reg.cshtml";
+
     ViewBag.Title = "User_Register";
 }
 
@@ -13,7 +15,7 @@
 </head>
 <body>
     <div class="panel panel-success" style="width:40%">
-        <div class="panel-heading text-center"> <h4> User Register</h4> </div>
+        <div class="panel-heading text-center"> <h4> User Register </h4> </div>
         <div class="panel-body">
             @using (Html.BeginForm())
             {

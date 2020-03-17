@@ -1,0 +1,61 @@
+﻿
+@model Food_Medical_Info_System.Models.Dietician
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title>Register Form</title>
+</head>
+<body>
+    <center>
+        <div class="panel panel-success" style="width:40%">
+            <div class="panel-heading text-center"> <h4> User Register</h4> </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <label>Name :</label> @Html.LabelFor(m => m.Name)
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label>Experience :</label> @Html.LabelFor(m => m.Experience)
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <h3> Disease : </h3>
+                        @Html.DropDownList("Disease",
+                                         new SelectList(Enum.GetValues(typeof(Disease))),
+                                         "Select Disease",
+                                         new { @class = "form-control" })
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label>What To Eat : </label>
+                        @Html.TextAreaFor(m => m.WhatToEat, new { @class = "form-control" })
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label>What To Avoid : </label>
+                        @Html.TextAreaFor(m => m.NotToEat, new { @class = "form-control" })
+                        <br />
+                    </div>
+
+                    <button class="btn btn-success" type="submit" value="Submit" onsubmit="submitForm()">Add</button>
+                    <button class="btn btn-success" type="submit" value="Submit" onsubmit="submitForm()">Search</button>
+                    <button class="btn btn-success" type="submit" value="Submit" onsubmit="submitForm()">Update</button>
+                    <button class="btn btn-success" type="submit" value="Submit" onsubmit="submitForm()">Delete</button>
+
+                }
+            </div>
+
+        </div>
+    </center>
+</body>
+</html>
+

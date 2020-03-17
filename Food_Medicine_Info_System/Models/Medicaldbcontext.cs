@@ -8,6 +8,10 @@ namespace Food_Medical_Info_System.Models
 {
     public class Medicaldbcontext : DbContext
     {
+        public Medicaldbcontext():base("FMSDB")
+        {
+
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<Dietician> Dieticians { get; set; }
 
