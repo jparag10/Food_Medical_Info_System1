@@ -7,13 +7,13 @@ namespace Food_Medicine_Info_System.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DB : IMigrationMetadata
+    public sealed partial class FMS : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FMS));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003170630334_DB"; }
+            get { return "202003170954167_FMS"; }
         }
         
         string IMigrationMetadata.Source

@@ -9,7 +9,7 @@ namespace Food_Medicine_Info_System.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Food_Medical_Info_System.Models.Medicaldbcontext context)

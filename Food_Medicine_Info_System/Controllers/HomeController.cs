@@ -71,16 +71,20 @@ namespace Food_Medical_Info_System.Controllers
            
             if (ModelState.IsValid)
             {
-                string fileName = Path.GetFileName(postedFile.FileName);
+                if (postedFile!=null)
+                {
+                    string fileName = Path.GetFileName(postedFile.FileName);
 
-                ////Set the Image File Path.
-                string filePath = "~/Uploads/" + fileName;
+                    ////Set the Image File Path.
+                    string filePath = "~/Uploads/" + fileName;
 
-                ////Save the Image File in Folder.
-                postedFile.SaveAs(Server.MapPath(filePath));
+                    ////Save the Image File in Folder.
+                    postedFile.SaveAs(Server.MapPath(filePath));
 
 
-                diet.filepath = filePath;
+                    diet.filepath = filePath;
+                }
+               
 
                 ////Insert the Image File details in Table.
                 //// FilesEntities entities = new FilesEntities();
@@ -91,8 +95,20 @@ namespace Food_Medical_Info_System.Controllers
                 //});
                 using (var context = new Medicaldbcontext())
                 {
-                     context.Dieticians.Add(diet);
-                    context.SaveChanges();
+
+                     
+                    try
+                    {
+                        context.Dieticians.Add(diet);
+                        context.SaveChanges();
+                    }
+                    catch(Exception)
+                    {
+                        ViewBag.Email = "Duplicate Email";
+                        return View(diet);
+                    }
+                       
+                    
                 }
                 return View("Search", diet);
             }

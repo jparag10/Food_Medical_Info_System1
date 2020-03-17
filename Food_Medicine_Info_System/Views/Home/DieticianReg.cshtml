@@ -17,8 +17,9 @@
 
             </div>
             <div class="form-group">
-                <label>Email :</label>
+                <label>Email :</label><br />
                 @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                <span class="text-danger">@ViewBag.Email</span>
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
             </div>
